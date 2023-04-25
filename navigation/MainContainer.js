@@ -20,7 +20,7 @@ function HeaderLogo() {
 }
 
 const skiPatrol = () =>
-Alert.alert('Ski Patrol', 'Hours: 9AM - 4PM', [
+Alert.alert('Ski Patrol', 'Will be available again during the 2023-24 Ski Season.', [
     {
         text: 'Call 585-374-1115',
         onPress: () => {Linking.openURL('tel:15853741115');} 

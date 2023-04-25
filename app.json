@@ -1,5 +1,15 @@
 {
   "expo": {
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "Allow $(PRODUCT_NAME) to use your location.",
+          "NSLocationAlwaysUsageDescription" : "Allow $(PRODUCT_NAME) to use your location.",
+          "NSLocationWhenInUseUsageDescription" : "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ],
     "name": "bMountainApp",
     "slug": "bMountainApp",
     "version": "1.0.0",
