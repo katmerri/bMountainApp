@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { View, Image, Button, Alert, Linking } from 'react-native';
+import { View, Image, Button, Alert, Linking, Platform, StyleSheet } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Icon } from '@rneui/themed';
 
 import HomeScreen from './screens/HomeScreen';
 import MenuScreen from './screens/MenuScreen';
@@ -57,13 +58,17 @@ export default function MainContainer() {
                 tabBarInactiveTintColor: '#FFFFFF',
                 tabBarLabelStyle: { paddingBottom: 10, fontSize: 10 },
                 tabBarStyle: { padding: 10, height: 90, backgroundColor: '#264653'},
-                headerStyle: { backgroundColor: '#264653', height: 120 },
+                headerStyle: { backgroundColor: '#264653', height: 125 },
                 headerTintColor: '#FFFFFF',
                 headerTitle: () => <HeaderLogo />,
-                headerLeft: () => <Button
+                headerLeft: () => <Icon
+                containerStyle={styles.iconContainer}
                 onPress={skiPatrol}
-                title='Ski Patrol'
-                color={'red'} />
+                type="ionicon"
+                name={Platform.OS === 'ios' ? 'medical-outline' : 'medical-outline'}
+                size={30}
+                color={'#ff0000'}
+                 />
                    
             })}
             >
@@ -77,3 +82,9 @@ export default function MainContainer() {
 
     );
 }
+
+const styles = StyleSheet.create({
+    iconContainer: {
+        paddingLeft: 25,
+    },
+});
