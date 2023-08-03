@@ -1,6 +1,7 @@
 import { navigate, navigation } from '@react-navigation/native';
 import * as React from 'react';
 import { View, StyleSheet, Linking, Alert, Text, TouchableOpacity } from 'react-native';
+import WeatherApp from './utils/weatherApp';
 
 const seasonPassesURL = 'https://www.bristolmountain.com/season-products/';
 
@@ -19,6 +20,7 @@ const SeasonPassURL = ({ url }) => {
         <Text style={styles.text3}>23-24 Season Pass Information</Text></TouchableOpacity>
 };
 
+
 export default function HomeScreen({ navigation }) {
     return (
         <View style={styles.container}>
@@ -26,6 +28,14 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.text2}>Save on your 2023-24 Season Pass when you purchase by September 15th. Also take advantage of the interest
             free payment plan for up to 6 months. </Text>
             <SeasonPassURL url={seasonPassesURL}/>
+            <View style={styles.weather}>
+                <View style={styles.weatherHeader}>
+                <Text style={styles.weatherText}>Canandaigua, NY</Text>
+                </View>
+                <View>
+                <WeatherApp/>
+                </View>
+            </View>
         </View>
     );
 }
@@ -63,5 +73,20 @@ const styles = StyleSheet.create({
         marginVertical: 2,
         paddingHorizontal: 10,
         paddingVertical: 10,
+    },
+    weather: {
+        backgroundColor: '#2a9d8f',
+        flex: 0,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    weatherText: {
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#ffffff',
+    },
+    weatherHeader: {
+        width: '100%',
     },
 });
