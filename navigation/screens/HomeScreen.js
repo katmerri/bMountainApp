@@ -54,9 +54,9 @@ export default function HomeScreen({ navigation }) {
         <View>
           <WeatherApp />
         </View>
-        <View>
-          <Conditions />
-        </View>
+      </View>
+      <View style={styles.conditionsBox}>
+        <Conditions />
       </View>
     </View>
   );
@@ -108,5 +108,9 @@ const styles = StyleSheet.create({
   },
   weatherHeader: {
     width: "100%",
+  },
+  conditionsBox: {
+    width: "100%",
+    backgroundColor: "#fff",
   },
 });
