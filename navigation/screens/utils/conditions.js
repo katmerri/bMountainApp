@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { parse } from "node-html-parser";
+import LiftsScreen from "../LiftsScreen";
 
 export default class Conditions extends React.Component {
   state = {
@@ -15,375 +16,60 @@ export default class Conditions extends React.Component {
       .then((response) => response.text())
       .then((text) => {
         const root = parse(text);
-        const array = [
-          {
+        const array2 = [];
+        for (let i = 2; i <= 7; i++) {
+          array2.push({
             name: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)"
+              `.avia-table-1 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
             ).childNodes[0].rawText,
             status: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
+              `.avia-table-1 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-1 > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-        ];
+          });
+        }
 
-        const trailArray = [
-          {
+        const array3 = [];
+        for (let i = 2; i <= 13; i++) {
+          array3.push({
             name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)"
+              `.avia-table-2 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
             ).childNodes[0].rawText,
             status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
+              `.avia-table-2 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
-          },
-          {
+          });
+        }
+        for (let i = 2; i <= 23; i++) {
+          array3.push({
             name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)"
+              `.avia-table-3 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
             ).childNodes[0].rawText,
             status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)"
+              `.avia-table-3 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
-          },
-          {
+          });
+        }
+        for (let i = 2; i <= 5; i++) {
+          array3.push({
             name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1)"
+              `.avia-table-4 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
             ).childNodes[0].rawText,
             status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(10) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(10) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(11) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(11) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-2 > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(8) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(9) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(10) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(10) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(11) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(11) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(12) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(13) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(14) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(14) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(15) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(15) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(16) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(16) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(17) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(17) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(18) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(18) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(19) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(19) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(20) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(20) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(21) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(21) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(22) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(22) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(23) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-3 > tbody:nth-child(1) > tr:nth-child(23) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-4 > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-          {
-            name: root.querySelector(
-              ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)"
-            ).childNodes[0].rawText,
-            status: root.querySelector(
-              ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
-            ).childNodes[0].rawText,
-          },
-        ];
-
+              `.avia-table-4 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
+            ).childNodes[0].rawText,
+          });
+        }
+        array3.push({
+          name: root.querySelector(
+            ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)"
+          ).childNodes[0].rawText,
+          status: root.querySelector(
+            ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
+          ).childNodes[0].rawText,
+        });
         this.setState({
-          array: array,
-          trailArray: trailArray,
+          array: array2,
+          trailArray: array3,
         });
       })
       .catch((error) => {
@@ -394,7 +80,12 @@ export default class Conditions extends React.Component {
     return (
       <View style={styles.liftAndTrail}>
         <View style={styles.conditionsBox}>
-          <Text style={styles.conditionText}>LIFTS</Text>
+          <Text
+            style={styles.conditionText}
+            onPress={() => navigation.navigate("LiftsScreen")}
+          >
+            LIFTS
+          </Text>
           <Text style={styles.conditionText}>
             {this.state.array.filter((lift) => lift.status === "OPEN").length}/
             {this.state.array.length}
