@@ -7,9 +7,12 @@ import {
   Alert,
   Text,
   TouchableOpacity,
+  ImageBackground,
+  Image,
 } from "react-native";
-import WeatherApp from "./utils/weatherApp";
+import WeatherApp from "./utils/weatherApp2";
 import Conditions from "./utils/conditions";
+import BMFall from "./images/BMFall.jpg";
 
 const seasonPassesURL = "https://www.bristolmountain.com/season-products/";
 
@@ -39,17 +42,16 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>
-        23-24 Season Pass - Summer rates until September 15th
+        23-24 Season Pass - Winter Rates Now Available
       </Text>
       <Text style={styles.text2}>
-        Save on your 2023-24 Season Pass when you purchase by September 15th.
-        Also take advantage of the interest free payment plan for up to 6
-        months.{" "}
+        Take advantage of our Season Card Packs - Available through December 31,
+        2023.{" "}
       </Text>
       <SeasonPassURL url={seasonPassesURL} />
       <View style={styles.weather}>
         <View style={styles.weatherHeader}>
-          <Text style={styles.weatherText}>Canandaigua, NY</Text>
+          <Text style={styles.weatherText}>Bristol Mountain Summit</Text>
         </View>
         <View>
           <WeatherApp />
@@ -57,6 +59,26 @@ export default function HomeScreen({ navigation }) {
       </View>
       <View style={styles.conditionsBox}>
         <Conditions />
+      </View>
+      <View style={{ width: "100%", height: 125, overflow: "hidden" }}>
+        <ImageBackground
+          source={BMFall}
+          style={{ width: "100%", height: undefined, aspectRatio: 1, top: -65 }}
+        >
+          <Text
+            style={{
+              color: "white",
+              fontSize: 42,
+              lineHeight: 125,
+              fontWeight: "bold",
+              textAlign: "center",
+              backgroundColor: "#808080c0",
+              top: 65,
+            }}
+          >
+            FALL
+          </Text>
+        </ImageBackground>
       </View>
     </View>
   );
