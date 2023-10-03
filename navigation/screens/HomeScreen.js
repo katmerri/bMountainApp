@@ -60,24 +60,9 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.conditionsBox}>
         <Conditions />
       </View>
-      <View style={{ width: "100%", height: 125, overflow: "hidden" }}>
-        <ImageBackground
-          source={BMFall}
-          style={{ width: "100%", height: undefined, aspectRatio: 1, top: -65 }}
-        >
-          <Text
-            style={{
-              color: "white",
-              fontSize: 42,
-              lineHeight: 125,
-              fontWeight: "bold",
-              textAlign: "center",
-              backgroundColor: "#808080c0",
-              top: 65,
-            }}
-          >
-            FALL
-          </Text>
+      <View style={styles.fallBox}>
+        <ImageBackground source={BMFall} style={styles.fallPicture}>
+          <Text style={styles.fallText}>FALL</Text>
         </ImageBackground>
       </View>
     </View>
@@ -134,5 +119,25 @@ const styles = StyleSheet.create({
   conditionsBox: {
     width: "100%",
     backgroundColor: "#fff",
+  },
+  fallBox: {
+    width: "100%",
+    height: 125,
+    overflow: "hidden",
+  },
+  fallText: {
+    color: "white",
+    fontSize: 42,
+    lineHeight: 125,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#808080c0",
+    top: 65,
+  },
+  fallPicture: {
+    width: "100%",
+    height: undefined,
+    aspectRatio: 1,
+    top: -65,
   },
 });
