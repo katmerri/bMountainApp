@@ -13,12 +13,38 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { Icon } from "@rneui/themed";
 
 import HomeScreen from "./screens/HomeScreen";
 import MenuScreen from "./screens/MenuScreen";
 import TrailMapScreen from "./screens/TrailMapScreen";
 import LiftsScreen from "./screens/LiftsScreen";
 import TrailsScreen from "./screens/TrailsScreen";
+
+function HeaderLogo() {
+  return (
+    <View style={{ alignItems: "center" }}>
+      <Image
+        style={{ width: 140, height: 70 }}
+        source={require("./screens/images/BMLogo.png")}
+      />
+    </View>
+  );
+}
+
+const skiPatrol = () =>
+  Alert.alert(
+    "Ski Patrol",
+    "Will be available again during the 2023-24 Ski Season.",
+    [
+      {
+        text: "Call 585-374-1115",
+        onPress: () => {
+          Linking.openURL("tel:15853741115");
+        },
+      },
+    ]
+  );
 
 const homeName = "Home";
 const trailMapName = "Trail Map";
@@ -51,6 +77,17 @@ function Start() {
         tabBarStyle: { padding: 10, height: 90, backgroundColor: "#264653" },
         headerStyle: { backgroundColor: "#264653", height: 125 },
         headerTintColor: "#FFFFFF",
+        headerTitle: () => <HeaderLogo />,
+        headerLeft: () => (
+          <Icon
+            containerStyle={styles.iconContainer}
+            onPress={skiPatrol}
+            type="ionicon"
+            name={Platform.OS === "ios" ? "medical-outline" : "medical-outline"}
+            size={30}
+            color={"#ff0000"}
+          />
+        ),
       })}
     >
       <Tab.Screen name={homeName} component={HomeScreen} />
