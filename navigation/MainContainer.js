@@ -11,6 +11,7 @@ import {
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Icon } from "@rneui/themed";
 
@@ -47,12 +48,13 @@ const homeName = "Home";
 const trailMapName = "Trail Map";
 const menuName = "Menu";
 
-const Tab = createBottomTabNavigator();
+const Root = createNativeStackNavigator();
+const Stack = createBottomTabNavigator();
 
 export default function MainContainer() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Stack.Navigator
         initialRouteName="homeName"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -90,10 +92,10 @@ export default function MainContainer() {
           ),
         })}
       >
-        <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={trailMapName} component={TrailMapScreen} />
-        <Tab.Screen name={menuName} component={MenuScreen} />
-      </Tab.Navigator>
+        <Stack.Screen name={homeName} component={HomeScreen} />
+        <Stack.Screen name={trailMapName} component={TrailMapScreen} />
+        <Stack.Screen name={menuName} component={MenuScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

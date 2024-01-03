@@ -1,4 +1,3 @@
-import { navigate, navigation } from "@react-navigation/native";
 import * as React from "react";
 import {
   View,
@@ -11,8 +10,10 @@ import {
   Image,
 } from "react-native";
 import WeatherApp from "./utils/weatherApp2";
-import Conditions from "./utils/conditions";
 import BMFall from "./images/BMFall.jpg";
+import Lifts from "./utils/lifts";
+import Trails from "./utils/trails";
+import { Button } from "@rneui/base";
 
 const seasonPassesURL = "https://www.bristolmountain.com/season-products/";
 
@@ -57,8 +58,35 @@ export default function HomeScreen({ navigation }) {
           <WeatherApp />
         </View>
       </View>
-      <View style={styles.conditionsBox}>
-        <Conditions />
+      <View>
+        <View style={styles.liftAndTrail}>
+          <View style={styles.conditionsBox}>
+            <Button
+              onPress={() => navigation.navigate("Lift Screen")}
+              title="LIFTS"
+              type="clear"
+              titleStyle={{
+                color: "#264653",
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+            />
+            <Lifts />
+          </View>
+          <View style={styles.trailBox}>
+            <Button
+              onPress={() => navigation.navigate("Trails Screen")}
+              title="TRAILS"
+              type="clear"
+              titleStyle={{
+                color: "#264653",
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+            />
+            <Trails />
+          </View>
+        </View>
       </View>
       <View style={styles.fallBox}>
         <ImageBackground source={BMFall} style={styles.fallPicture}>
@@ -116,10 +144,6 @@ const styles = StyleSheet.create({
   weatherHeader: {
     width: "100%",
   },
-  conditionsBox: {
-    width: "100%",
-    backgroundColor: "#fff",
-  },
   fallBox: {
     width: "100%",
     height: 125,
@@ -139,5 +163,24 @@ const styles = StyleSheet.create({
     height: undefined,
     aspectRatio: 1,
     top: -65,
+  },
+  liftAndTrail: {
+    flex: 0,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+    padding: 5,
+  },
+  conditionsBox: {
+    width: "50%",
+  },
+  conditionText: {
+    color: "#264653",
+    fontSize: 20,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  trailBox: {
+    width: "50%",
   },
 });
