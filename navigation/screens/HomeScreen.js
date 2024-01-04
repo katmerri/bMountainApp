@@ -46,8 +46,8 @@ export default function HomeScreen({ navigation }) {
         23-24 Season Pass - Winter Rates Now Available
       </Text>
       <Text style={styles.text2}>
-        Take advantage of our Season Card Packs - Available through December 31,
-        2023.{" "}
+        Take advantage of our Season Card Packs - Sale extended to January 7,
+        2024!{" "}
       </Text>
       <SeasonPassURL url={seasonPassesURL} />
       <View style={styles.weather}>
@@ -87,11 +87,6 @@ export default function HomeScreen({ navigation }) {
             <Trails />
           </View>
         </View>
-      </View>
-      <View style={styles.fallBox}>
-        <ImageBackground source={BMFall} style={styles.fallPicture}>
-          <Text style={styles.fallText}>FALL</Text>
-        </ImageBackground>
       </View>
     </View>
   );

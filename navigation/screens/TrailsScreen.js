@@ -1,16 +1,15 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
+import TrailsListed from "./utils/trailslisted";
 
 export default function TrailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text
-        onPress={() => navigation.navigate("Home")}
-        style={{ fontSize: 26, fontWeight: "bold" }}
-      >
-        {" "}
-        TRAILS
-      </Text>
+      <ScrollView>
+        <Text>
+          <TrailsListed />
+        </Text>
+      </ScrollView>
     </View>
   );
 }
