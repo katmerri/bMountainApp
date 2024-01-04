@@ -73,13 +73,22 @@ export default class TrailsListed extends React.Component {
   }
   render() {
     return (
-      <View style={styles.liftAndTrail}>
+      <View>
         {this.state.trailArray.map((trail) => {
           return (
             // <Icon type={getIconType(trail.difficulty)}></Icon>
-            <Text key={trail.name} style={styles.conditionText}>
-              {trail.name}: {trail.status}
-            </Text>
+            <View style={styles.liftAndTrail}>
+              <View style={styles.conditionsBox}>
+                <Text key={trail.name} style={styles.conditionText}>
+                  {trail.name}
+                </Text>
+              </View>
+              <View style={styles.trailBox}>
+                <Text key={trail.status} style={styles.statusbox}>
+                  {trail.status}
+                </Text>
+              </View>
+            </View>
           );
         })}
       </View>
@@ -88,10 +97,27 @@ export default class TrailsListed extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  liftAndTrail: {
+    flex: 0,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+    padding: 5,
+  },
+  conditionsBox: {
+    width: "75%",
+  },
   conditionText: {
     color: "#264653",
     fontSize: 20,
-    textAlign: "center",
+    textAlign: "left",
     fontWeight: "bold",
+  },
+  trailBox: {
+    width: "25%",
+  },
+  statusbox: {
+    textAlign: "right",
+    fontSize: 20,
   },
 });

@@ -39,9 +39,18 @@ export default class LiftsListed extends React.Component {
       <View>
         {this.state.array.map((lift) => {
           return (
-            <Text key={lift.name} style={styles.conditionText}>
-              {lift.name}: {lift.status}
-            </Text>
+            <View style={styles.liftAndTrail}>
+              <View style={styles.conditionsBox}>
+                <Text key={lift.name} style={styles.conditionText}>
+                  {lift.name}
+                </Text>
+              </View>
+              <View style={styles.trailBox}>
+                <Text key={lift.status} style={styles.statusbox}>
+                  {lift.status}
+                </Text>
+              </View>
+            </View>
           );
         })}
       </View>
@@ -50,10 +59,27 @@ export default class LiftsListed extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  liftAndTrail: {
+    flex: 0,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+    padding: 5,
+  },
+  conditionsBox: {
+    width: "75%",
+  },
   conditionText: {
     color: "#264653",
     fontSize: 20,
-    textAlign: "center",
+    textAlign: "left",
     fontWeight: "bold",
+  },
+  trailBox: {
+    width: "25%",
+  },
+  statusbox: {
+    textAlign: "right",
+    fontSize: 20,
   },
 });
