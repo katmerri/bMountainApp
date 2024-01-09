@@ -1,10 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { parse } from "node-html-parser";
-import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import LiftsScreen from "../LiftsScreen";
+import { Button } from "@rneui/base";
 
-export default class TrailsListed extends React.Component {
+export default class Conditions extends React.Component {
   state = {
+    array: [],
     trailArray: [],
   };
 
@@ -15,6 +19,17 @@ export default class TrailsListed extends React.Component {
       .then((response) => response.text())
       .then((text) => {
         const root = parse(text);
+        const array2 = [];
+        for (let i = 2; i <= 7; i++) {
+          array2.push({
+            name: root.querySelector(
+              `.avia-table-1 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
+            ).childNodes[0].rawText,
+            status: root.querySelector(
+              `.avia-table-1 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
+            ).childNodes[0].rawText,
+          });
+        }
 
         const array3 = [];
         for (let i = 2; i <= 13; i++) {
@@ -25,7 +40,6 @@ export default class TrailsListed extends React.Component {
             status: root.querySelector(
               `.avia-table-2 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
-            difficulty: 1,
           });
         }
         for (let i = 2; i <= 23; i++) {
@@ -36,7 +50,6 @@ export default class TrailsListed extends React.Component {
             status: root.querySelector(
               `.avia-table-3 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
-            difficulty: 2,
           });
         }
         for (let i = 2; i <= 5; i++) {
@@ -47,7 +60,6 @@ export default class TrailsListed extends React.Component {
             status: root.querySelector(
               `.avia-table-4 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
-            difficulty: 3,
           });
         }
         array3.push({
@@ -57,15 +69,10 @@ export default class TrailsListed extends React.Component {
           status: root.querySelector(
             ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
           ).childNodes[0].rawText,
-          difficulty: 4,
         });
         this.setState({
-          trailArray: array3.map((trail) => {
-            return {
-              ...trail,
-              name: trail.name.replace("&#8217;", "'"),
-            };
-          }),
+          array: array2,
+          trailArray: array3,
         });
       })
       .catch((error) => {
@@ -74,58 +81,24 @@ export default class TrailsListed extends React.Component {
   }
   render() {
     return (
-      <View>
-        {this.state.trailArray.map((trail) => {
-          let iconName;
-          if (trail.difficulty === 1) {
-            iconName = (
-              <FontAwesome name={"circle"} color={"#008000"} size={20} />
-            );
-          } else if (trail.difficulty === 2) {
-            iconName = (
-              <FontAwesome name={"square"} color={"#0000FF"} size={20} />
-            );
-          } else if (trail.difficulty === 3) {
-            iconName = (
-              <MaterialCommunityIcons
-                name={"cards-diamond"}
-                color={"#000000"}
-                size={20}
-              />
-            );
-          } else if (trail.difficulty === 4) {
-            iconName = (
-              <MaterialCommunityIcons
-                name={"cards-diamond"}
-                color={"#000000"}
-                size={20}
-              />
-            ) && (
-              <MaterialCommunityIcons
-                name={"cards-diamond"}
-                color={"#000000"}
-                size={20}
-              />
-            );
-          }
-          return (
-            <View style={styles.liftAndTrail}>
-              <View style={styles.difficultybox}>
-                <Text key={trail.difficulty}>{iconName}</Text>
-              </View>
-              <View style={styles.conditionsBox}>
-                <Text key={trail.name} style={styles.conditionText}>
-                  {trail.name}
-                </Text>
-              </View>
-              <View style={styles.trailBox}>
-                <Text key={trail.status} style={styles.statusbox}>
-                  {trail.status}
-                </Text>
-              </View>
-            </View>
-          );
-        })}
+      <View style={styles.liftAndTrail}>
+        <View style={styles.conditionsBox}>
+          <Text style={styles.conditionText}>LIFTS</Text>
+          <Text style={styles.conditionText}>
+            {this.state.array.filter((lift) => lift.status === "OPEN").length}/
+            {this.state.array.length}
+          </Text>
+        </View>
+        <View style={styles.trailBox}>
+          <Text style={styles.conditionText}>TRAILS</Text>
+          <Text style={styles.conditionText}>
+            {
+              this.state.trailArray.filter((trail) => trail.status === "OPEN")
+                .length
+            }
+            /{this.state.trailArray.length}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -140,22 +113,15 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   conditionsBox: {
-    width: "70%",
+    width: "50%",
   },
   conditionText: {
     color: "#264653",
     fontSize: 20,
-    textAlign: "left",
+    textAlign: "center",
     fontWeight: "bold",
   },
   trailBox: {
-    width: "20%",
-  },
-  statusbox: {
-    textAlign: "right",
-    fontSize: 20,
-  },
-  difficultybox: {
-    width: "10%",
+    width: "50%",
   },
 });

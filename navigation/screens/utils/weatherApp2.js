@@ -55,7 +55,7 @@ export default class WeatherApp extends React.Component {
 
     if (weatherCondition > 38) {
       iconName = <Ionicons name={"sunny-outline"} color={"#fff"} size={40} />;
-    } else if (weatherCondition < 38) {
+    } else if (weatherCondition < 38 && weatherWind < 10) {
       iconName = <Ionicons name={"cloudy-outline"} color={"#fff"} size={40} />;
     } else if (weatherWind > 15) {
       iconName = (

@@ -62,7 +62,7 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.liftAndTrail}>
           <View style={styles.conditionsBox}>
             <Button
-              onPress={() => navigation.navigate("Lift Screen")}
+              onPress={() => navigation.navigate("Lifts")}
               title="LIFTS"
               type="clear"
               titleStyle={{
@@ -75,7 +75,7 @@ export default function HomeScreen({ navigation }) {
           </View>
           <View style={styles.trailBox}>
             <Button
-              onPress={() => navigation.navigate("Trails Screen")}
+              onPress={() => navigation.navigate("Trails")}
               title="TRAILS"
               type="clear"
               titleStyle={{

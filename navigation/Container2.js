@@ -107,12 +107,12 @@ export default function Secondary() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Lift Screen"
+          name="Lifts"
           component={LiftsScreen}
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="Trails Screen"
+          name="Trails"
           component={TrailsScreen}
           options={{ headerShown: true }}
         />
