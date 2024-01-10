@@ -79,18 +79,18 @@ export default class TrailsListed extends React.Component {
           let iconName;
           if (trail.difficulty === 1) {
             iconName = (
-              <FontAwesome name={"circle"} color={"#008000"} size={20} />
+              <FontAwesome name={"circle"} color={"#008000"} size={25} />
             );
           } else if (trail.difficulty === 2) {
             iconName = (
-              <FontAwesome name={"square"} color={"#0000FF"} size={20} />
+              <FontAwesome name={"square"} color={"#0000FF"} size={25} />
             );
           } else if (trail.difficulty === 3) {
             iconName = (
               <MaterialCommunityIcons
                 name={"cards-diamond"}
                 color={"#000000"}
-                size={20}
+                size={25}
               />
             );
           } else if (trail.difficulty === 4) {
@@ -98,30 +98,37 @@ export default class TrailsListed extends React.Component {
               <MaterialCommunityIcons
                 name={"cards-diamond"}
                 color={"#000000"}
-                size={20}
+                size={25}
               />
             ) && (
               <MaterialCommunityIcons
                 name={"cards-diamond"}
                 color={"#000000"}
-                size={20}
+                size={25}
               />
             );
           }
+
+          let iconName2;
+          if (trail.status === "OPEN") {
+            iconName2 = (
+              <FontAwesome name="check" color={"#008000"} size={25} />
+            );
+          } else if (trail.status === "CLOSED") {
+            iconName2 = (
+              <FontAwesome name="times" color={"#ff0000"} size={25} />
+            );
+          }
           return (
-            <View style={styles.liftAndTrail}>
+            <View key={trail.name} style={styles.liftAndTrail}>
               <View style={styles.difficultybox}>
-                <Text key={trail.difficulty}>{iconName}</Text>
+                <Text>{iconName}</Text>
               </View>
               <View style={styles.conditionsBox}>
-                <Text key={trail.name} style={styles.conditionText}>
-                  {trail.name}
-                </Text>
+                <Text style={styles.conditionText}>{trail.name}</Text>
               </View>
               <View style={styles.trailBox}>
-                <Text key={trail.status} style={styles.statusbox}>
-                  {trail.status}
-                </Text>
+                <Text style={styles.statusbox}>{iconName2}</Text>
               </View>
             </View>
           );
@@ -138,6 +145,8 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     width: "100%",
     padding: 5,
+    borderBottomColor: "#d3d3d3",
+    borderBottomWidth: "1px",
   },
   conditionsBox: {
     width: "70%",

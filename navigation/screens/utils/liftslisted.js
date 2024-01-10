@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { parse } from "node-html-parser";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default class LiftsListed extends React.Component {
   state = {
@@ -38,17 +39,23 @@ export default class LiftsListed extends React.Component {
     return (
       <View>
         {this.state.array.map((lift) => {
+          let iconName2;
+          if (lift.status === "OPEN") {
+            iconName2 = (
+              <FontAwesome name="check" color={"#008000"} size={25} />
+            );
+          } else if (lift.status === "CLOSED") {
+            iconName2 = (
+              <FontAwesome name="times" color={"#ff0000"} size={25} />
+            );
+          }
           return (
-            <View style={styles.liftAndTrail}>
+            <View key={lift.name} style={styles.liftAndTrail}>
               <View style={styles.conditionsBox}>
-                <Text key={lift.name} style={styles.conditionText}>
-                  {lift.name}
-                </Text>
+                <Text style={styles.conditionText}>{lift.name}</Text>
               </View>
               <View style={styles.trailBox}>
-                <Text key={lift.status} style={styles.statusbox}>
-                  {lift.status}
-                </Text>
+                <Text style={styles.statusbox}>{iconName2}</Text>
               </View>
             </View>
           );
@@ -65,6 +72,8 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     width: "100%",
     padding: 5,
+    borderBottomWidth: "1px",
+    borderBottomColor: "#d3d3d3",
   },
   conditionsBox: {
     width: "75%",
