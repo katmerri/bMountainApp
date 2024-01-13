@@ -356,3 +356,6 @@ R
     "ErrorMessage": null,
     "Id": "f4ea1847-abb1-4448-9a16-85b5503100e0"
 }
+
+
+.avia-table-2 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(3)

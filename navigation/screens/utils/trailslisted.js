@@ -2,6 +2,14 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { parse } from "node-html-parser";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+
+function getConditions(htmlElement) {
+  if (htmlElement.childNodes.length > 0) {
+    return htmlElement.childNodes[0].rawText;
+  }
+  return " ";
+}
 
 export default class TrailsListed extends React.Component {
   state = {
@@ -18,6 +26,9 @@ export default class TrailsListed extends React.Component {
 
         const array3 = [];
         for (let i = 2; i <= 13; i++) {
+          const el = root.querySelector(
+            `.avia-table-2 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(3)`
+          );
           array3.push({
             name: root.querySelector(
               `.avia-table-2 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
@@ -25,10 +36,14 @@ export default class TrailsListed extends React.Component {
             status: root.querySelector(
               `.avia-table-2 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
+            surfaceCondition: getConditions(el),
             difficulty: 1,
           });
         }
         for (let i = 2; i <= 23; i++) {
+          const el = root.querySelector(
+            `.avia-table-3 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(3)`
+          );
           array3.push({
             name: root.querySelector(
               `.avia-table-3 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
@@ -36,10 +51,14 @@ export default class TrailsListed extends React.Component {
             status: root.querySelector(
               `.avia-table-3 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
+            surfaceCondition: getConditions(el),
             difficulty: 2,
           });
         }
         for (let i = 2; i <= 5; i++) {
+          const el = root.querySelector(
+            `.avia-table-4 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(3)`
+          );
           array3.push({
             name: root.querySelector(
               `.avia-table-4 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
@@ -47,9 +66,13 @@ export default class TrailsListed extends React.Component {
             status: root.querySelector(
               `.avia-table-4 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(2)`
             ).childNodes[0].rawText,
+            surfaceCondition: getConditions(el),
             difficulty: 3,
           });
         }
+        const el = root.querySelector(
+          ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(3)"
+        );
         array3.push({
           name: root.querySelector(
             ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)"
@@ -57,6 +80,7 @@ export default class TrailsListed extends React.Component {
           status: root.querySelector(
             ".avia-table-5 > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
           ).childNodes[0].rawText,
+          surfaceCondition: getConditions(el),
           difficulty: 4,
         });
         this.setState({
@@ -119,6 +143,13 @@ export default class TrailsListed extends React.Component {
               <FontAwesome name="times" color={"#ff0000"} size={25} />
             );
           }
+
+          let iconName3;
+          if (trail.surfaceCondition === "MG/FG/LG") {
+            iconName3 = (
+              <FontAwesome5 name="snowplow" color="black" size={20} />
+            );
+          }
           return (
             <View key={trail.name} style={styles.liftAndTrail}>
               <View style={styles.difficultybox}>
@@ -128,7 +159,9 @@ export default class TrailsListed extends React.Component {
                 <Text style={styles.conditionText}>{trail.name}</Text>
               </View>
               <View style={styles.trailBox}>
-                <Text style={styles.statusbox}>{iconName2}</Text>
+                <Text style={styles.statusbox}>
+                  {iconName3} {iconName2}
+                </Text>
               </View>
             </View>
           );
@@ -162,7 +195,6 @@ const styles = StyleSheet.create({
   },
   statusbox: {
     textAlign: "right",
-    fontSize: 20,
   },
   difficultybox: {
     width: "10%",
