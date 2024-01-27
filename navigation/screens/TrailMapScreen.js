@@ -7,25 +7,23 @@ import {
   PanResponder,
   Dimensions,
   ScrollView,
+  StyleSheet,
 } from "react-native";
-import ImageZoom from "react-native-image-pan-zoom";
+import DraggableMap from "./utils/map";
 
 export default function TrailMapScreen({ navigation }) {
   return (
-    <View>
+    <View style={styles.trailmap}>
       <ScrollView>
-        <ImageZoom
-          cropWidth={Dimensions.get("window").width}
-          cropHeight={Dimensions.get("window").height}
-          imageWidth={300}
-          imageHeight={225}
-        >
-          <Image
-            style={{ width: 300, height: 225 }}
-            source={require("./images/BMTrailsMap.jpg")}
-          />
-        </ImageZoom>
+        <DraggableMap />
       </ScrollView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  trailmap: {
+    width: "100%",
+    height: "100%",
+  },
+});

@@ -145,7 +145,10 @@ export default class TrailsListed extends React.Component {
           }
 
           let iconName3;
-          if (trail.surfaceCondition === "MG/FG/LG") {
+          if (
+            trail.surfaceCondition === "MG/FG/LG" ||
+            trail.surfaceCondition === "MG/PP"
+          ) {
             iconName3 = (
               <FontAwesome5 name="snowplow" color="black" size={20} />
             );
