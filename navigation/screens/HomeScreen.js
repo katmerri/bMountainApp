@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import WeatherApp from "./utils/weatherApp2";
 import BMFall from "./images/BMFall.jpg";
+import BMCam from "./images/mountaincam.jpg";
 import Lifts from "./utils/lifts";
 import Trails from "./utils/trails";
 import { Button } from "@rneui/base";
@@ -34,7 +35,7 @@ const SeasonPassURL = ({ url }) => {
       onPress={handlePress}
       style={styles.button1}
     >
-      <Text style={styles.text3}>23-24 Season Pass Information</Text>
+      <Text style={styles.text3}>24-25 Season Pass Information</Text>
     </TouchableOpacity>
   );
 };
@@ -43,12 +44,10 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text1}>
-        23-24 Season Pass - Winter Rates Now Available
+        24-25 Season Pass - Winter Rates Now Available
       </Text>
-      <Text style={styles.text2}>
-        Take advantage of our Season Card Packs - Sale extended to January 7,
-        2024!{" "}
-      </Text>
+      <Text style={styles.text2}>Take advantage of our Season Card Packs!</Text>
+      <Text style={styles.text2}>Purchase before December 31, 2024!</Text>
       <SeasonPassURL url={seasonPassesURL} />
       <View style={styles.weather}>
         <View style={styles.weatherHeader}>
@@ -87,6 +86,16 @@ export default function HomeScreen({ navigation }) {
             <Trails />
           </View>
         </View>
+      </View>
+      <View style={styles.fallBox}>
+        <ImageBackground source={BMFall} style={styles.fallPicture}>
+          <Text style={styles.fallText}>FALL</Text>
+        </ImageBackground>
+      </View>
+      <View style={styles.fallBox}>
+        <ImageBackground source={BMCam} style={styles.camPicture}>
+          <Text style={styles.camText}>MOUNTAIN CAM</Text>
+        </ImageBackground>
       </View>
     </View>
   );
@@ -150,7 +159,7 @@ const styles = StyleSheet.create({
     lineHeight: 125,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#808080c0",
+    backgroundColor: "#808080C0",
     top: 65,
   },
   fallPicture: {
@@ -158,6 +167,21 @@ const styles = StyleSheet.create({
     height: undefined,
     aspectRatio: 1,
     top: -65,
+  },
+  camPicture: {
+    width: "100%",
+    height: undefined,
+    aspectRatio: 1,
+    top: -140,
+  },
+  camText: {
+    color: "white",
+    fontSize: 42,
+    lineHeight: 125,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#808080C0",
+    top: 140,
   },
   liftAndTrail: {
     flex: 0,
