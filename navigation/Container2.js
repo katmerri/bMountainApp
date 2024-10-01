@@ -20,6 +20,7 @@ import MenuScreen from "./screens/MenuScreen";
 import TrailMapScreen from "./screens/TrailMapScreen";
 import LiftsScreen from "./screens/LiftsScreen";
 import TrailsScreen from "./screens/TrailsScreen";
+import FallScreen from "./screens/FallScreen";
 
 function HeaderLogo() {
   return (
@@ -114,6 +115,11 @@ export default function Secondary() {
         <Stack.Screen
           name="Trails"
           component={TrailsScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Fall"
+          component={FallScreen}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

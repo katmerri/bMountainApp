@@ -87,11 +87,17 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
       </View>
-      <View style={styles.fallBox}>
-        <ImageBackground source={BMFall} style={styles.fallPicture}>
-          <Text style={styles.fallText}>FALL</Text>
-        </ImageBackground>
-      </View>
+      <TouchableOpacity
+        title="fall page"
+        onPress={() => navigation.navigate("Fall")}
+        type="clear"
+      >
+        <View style={styles.fallBox}>
+          <ImageBackground source={BMFall} style={styles.fallPicture}>
+            <Text style={styles.fallText}>FALL</Text>
+          </ImageBackground>
+        </View>
+      </TouchableOpacity>
       <View style={styles.fallBox}>
         <ImageBackground source={BMCam} style={styles.camPicture}>
           <Text style={styles.camText}>MOUNTAIN CAM</Text>
