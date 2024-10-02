@@ -13,9 +13,9 @@ import DraggableMap from "./utils/map";
 
 export default function TrailMapScreen({ navigation }) {
   return (
-    <View style={styles.trailmap}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ScrollView>
-        <DraggableMap />
+        <Image source={require("./images/BMTrailsMap.jpg")} />
       </ScrollView>
     </View>
   );

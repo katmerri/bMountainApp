@@ -7,7 +7,6 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
-  Image,
 } from "react-native";
 import WeatherApp from "./utils/weatherApp2";
 import BMFall from "./images/BMFall.jpg";
