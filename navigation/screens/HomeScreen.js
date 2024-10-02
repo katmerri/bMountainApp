@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import WeatherApp from "./utils/weatherApp2";
 import BMFall from "./images/BMFall.jpg";
@@ -41,68 +42,78 @@ const SeasonPassURL = ({ url }) => {
 
 export default function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text1}>
-        24-25 Season Pass - Winter Rates Now Available
-      </Text>
-      <Text style={styles.text2}>Take advantage of our Season Card Packs!</Text>
-      <Text style={styles.text2}>Purchase before December 31, 2024!</Text>
-      <SeasonPassURL url={seasonPassesURL} />
-      <View style={styles.weather}>
-        <View style={styles.weatherHeader}>
-          <Text style={styles.weatherText}>Bristol Mountain Summit</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.text1}>
+          24-25 Season Pass - Winter Rates Now Available
+        </Text>
+        <Text style={styles.text2}>
+          Take advantage of our Season Card Packs!
+        </Text>
+        <Text style={styles.text2}>Purchase before December 31, 2024!</Text>
+        <SeasonPassURL url={seasonPassesURL} />
+        <View style={styles.weather}>
+          <View style={styles.weatherHeader}>
+            <Text style={styles.weatherText}>Bristol Mountain Summit</Text>
+          </View>
+          <View>
+            <WeatherApp />
+          </View>
         </View>
         <View>
-          <WeatherApp />
-        </View>
-      </View>
-      <View>
-        <View style={styles.liftAndTrail}>
-          <View style={styles.conditionsBox}>
-            <Button
-              onPress={() => navigation.navigate("Lifts")}
-              title="LIFTS"
-              type="clear"
-              titleStyle={{
-                color: "#264653",
-                fontWeight: "bold",
-                fontSize: 20,
-              }}
-            />
-            <Lifts />
-          </View>
-          <View style={styles.trailBox}>
-            <Button
-              onPress={() => navigation.navigate("Trails")}
-              title="TRAILS"
-              type="clear"
-              titleStyle={{
-                color: "#264653",
-                fontWeight: "bold",
-                fontSize: 20,
-              }}
-            />
-            <Trails />
+          <View style={styles.liftAndTrail}>
+            <View style={styles.conditionsBox}>
+              <Button
+                onPress={() => navigation.navigate("Lifts")}
+                title="LIFTS"
+                type="clear"
+                titleStyle={{
+                  color: "#264653",
+                  fontWeight: "bold",
+                  fontSize: 20,
+                }}
+              />
+              <Lifts />
+            </View>
+            <View style={styles.trailBox}>
+              <Button
+                onPress={() => navigation.navigate("Trails")}
+                title="TRAILS"
+                type="clear"
+                titleStyle={{
+                  color: "#264653",
+                  fontWeight: "bold",
+                  fontSize: 20,
+                }}
+              />
+              <Trails />
+            </View>
           </View>
         </View>
+        <TouchableOpacity
+          title="Fall"
+          onPress={() => navigation.navigate("Fall")}
+          type="clear"
+        >
+          <View style={styles.fallBox}>
+            <ImageBackground source={BMFall} style={styles.fallPicture}>
+              <Text style={styles.fallText}>FALL</Text>
+            </ImageBackground>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          title="Mountain Cameras"
+          onPress={() => navigation.navigate("MountainCam")}
+          type="clear"
+        >
+          <View style={styles.fallBox}>
+            <ImageBackground source={BMCam} style={styles.camPicture}>
+              <Text style={styles.camText}>MOUNTAIN CAM</Text>
+            </ImageBackground>
+          </View>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        title="fall page"
-        onPress={() => navigation.navigate("Fall")}
-        type="clear"
-      >
-        <View style={styles.fallBox}>
-          <ImageBackground source={BMFall} style={styles.fallPicture}>
-            <Text style={styles.fallText}>FALL</Text>
-          </ImageBackground>
-        </View>
-      </TouchableOpacity>
-      <View style={styles.fallBox}>
-        <ImageBackground source={BMCam} style={styles.camPicture}>
-          <Text style={styles.camText}>MOUNTAIN CAM</Text>
-        </ImageBackground>
-      </View>
-    </View>
+    </ScrollView>
   );
 }
 

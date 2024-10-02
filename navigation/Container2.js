@@ -21,6 +21,7 @@ import TrailMapScreen from "./screens/TrailMapScreen";
 import LiftsScreen from "./screens/LiftsScreen";
 import TrailsScreen from "./screens/TrailsScreen";
 import FallScreen from "./screens/FallScreen";
+import MountainCamScreen from "./screens/MountainCamScreen";
 
 function HeaderLogo() {
   return (
@@ -120,6 +121,11 @@ export default function Secondary() {
         <Stack.Screen
           name="Fall"
           component={FallScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="MountainCam"
+          component={MountainCamScreen}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
