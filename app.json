@@ -9,7 +9,8 @@
           "NSLocationWhenInUseUsageDescription": "Allow $(PRODUCT_NAME) to use your location."
         }
       ],
-      "expo-router"
+      "expo-router",
+      "expo-font"
     ],
     "name": "bMountainApp",
     "slug": "bMountainApp",
