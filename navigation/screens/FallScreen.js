@@ -125,17 +125,14 @@ export default function FallScreen({ navigation }) {
           </Text>
         </View>
         <View style={styles.info}>
-          <Text></Text>
-          <Text></Text>
-          <Text style={styles.text3}>ATTENTION:</Text>
+          <Text style={styles.text3}>{"\n"}ATTENTION:</Text>
           <Text style={styles.text4}>
             Admissions are limited. We cannot guarantee availability during your
             desired time slot. Please, reserve early to avoid disappointment
             during our peak times. Once tickets are sold out online, they are
             sold out everywhere. There is no walk-up ticket availability for
-            sold out time slots.
+            sold out time slots. {"\n"}
           </Text>
-          <Text></Text>
           <Text style={styles.text3}>Executive Season Pass Holders:</Text>
           <Text style={styles.text4}>
             Bristol Mountain Executive Season Passholders must call (585)
@@ -145,8 +142,9 @@ export default function FallScreen({ navigation }) {
         <View style={styles.info}>
           <Text style={styles.text2}>Upcoming Events:</Text>
           <Text style={styles.text3}>Live Music at the Summit</Text>
-          <Text style={styles.text4}>Sunday, October 20th - Benny Juice</Text>
-          <Text></Text>
+          <Text style={styles.text4}>
+            Sunday, October 20th - Benny Juice {"\n"}
+          </Text>
           <Text style={styles.text3}>Fall Festival 2024</Text>
           <Text style={styles.text4}>October 12th and 13th</Text>
         </View>
