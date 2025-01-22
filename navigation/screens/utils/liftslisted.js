@@ -16,7 +16,7 @@ export default class LiftsListed extends React.Component {
       .then((text) => {
         const root = parse(text);
         const array2 = [];
-        for (let i = 2; i <= 7; i++) {
+        for (let i = 2; i <= 8; i++) {
           array2.push({
             name: root.querySelector(
               `.avia-table-1 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(1)`
