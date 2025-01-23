@@ -55,8 +55,10 @@ export default class WeatherApp extends React.Component {
 
     if (weatherCondition > 38) {
       iconName = <Ionicons name={"sunny-outline"} color={"#fff"} size={40} />;
-    } else if (weatherCondition < 38 && weatherWind < 10) {
-      iconName = <Ionicons name={"cloudy-outline"} color={"#fff"} size={40} />;
+    } else if (weatherRain > 0.001) {
+      iconName = <Ionicons name={"rainy-outline"} color={"#fff"} size={40} />;
+    } else if (weatherSnow > 1) {
+      iconName = <Ionicons name={"snow"} color={"#fff"} size={40} />;
     } else if (weatherWind > 15) {
       iconName = (
         <MaterialCommunityIcons
@@ -65,10 +67,8 @@ export default class WeatherApp extends React.Component {
           size={40}
         />
       );
-    } else if (weatherRain > 0.001) {
-      iconName = <Ionicons name={"rainy-outline"} color={"#fff"} size={40} />;
-    } else if (weatherSnow > 1) {
-      iconName = <Ionicons name={"snow"} color={"#fff"} size={40} />;
+    } else {
+      iconName = <Ionicons name={"cloudy-outline"} color={"#fff"} size={40} />;
     }
 
     const day = moment().format("dddd");
