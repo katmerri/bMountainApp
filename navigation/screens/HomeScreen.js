@@ -10,7 +10,6 @@ import {
   ScrollView,
 } from "react-native";
 import WeatherApp from "./utils/weatherApp2";
-import BMFall from "./images/BMFall.jpg";
 import BMCam from "./images/mountaincam.jpg";
 import Lifts from "./utils/lifts";
 import Trails from "./utils/trails";
@@ -91,24 +90,13 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
         <TouchableOpacity
-          title="Fall"
-          onPress={() => navigation.navigate("Fall")}
-          type="clear"
-        >
-          <View style={styles.fallBox}>
-            <ImageBackground source={BMFall} style={styles.fallPicture}>
-              <Text style={styles.fallText}>FALL</Text>
-            </ImageBackground>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
           title="Mountain Cameras"
           onPress={() => navigation.navigate("MountainCam")}
           type="clear"
         >
           <View style={styles.fallBox}>
             <ImageBackground source={BMCam} style={styles.camPicture}>
-              <Text style={styles.camText}>MOUNTAIN CAM</Text>
+              <Text style={styles.camText}>MOUNTAIN CAMS</Text>
             </ImageBackground>
           </View>
         </TouchableOpacity>
@@ -124,7 +112,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text1: {
-    backgroundColor: "#2a9d8f",
+    backgroundColor: "#a76e1f",
     alignSelf: "stretch",
     textAlign: "center",
     fontSize: 18,
@@ -132,7 +120,7 @@ const styles = StyleSheet.create({
     color: "#ffffff",
   },
   text2: {
-    backgroundColor: "#2a9d8f",
+    backgroundColor: "#a76e1f",
     alignSelf: "stretch",
     textAlign: "center",
     color: "#ffffff",
@@ -143,14 +131,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   button1: {
-    backgroundColor: "#ff6900",
+    backgroundColor: "#70503d",
     borderRadius: 5,
     marginVertical: 2,
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
   weather: {
-    backgroundColor: "#2a9d8f",
+    backgroundColor: "#a76e1f",
     flex: 0,
     flexDirection: "row",
     flexWrap: "wrap",

@@ -40,9 +40,9 @@ const skiPatrol = () =>
     "Will be available again during the 2023-24 Ski Season.",
     [
       {
-        text: "Call 585-374-1115",
+        text: "Call 585-374-1178",
         onPress: () => {
-          Linking.openURL("tel:15853741115");
+          Linking.openURL("tel:15853741178");
         },
       },
     ]
@@ -73,11 +73,11 @@ function Start() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "#ff6900",
+        tabBarActiveTintColor: "#a76e1f",
         tabBarInactiveTintColor: "#FFFFFF",
         tabBarLabelStyle: { paddingBottom: 10, fontSize: 10 },
-        tabBarStyle: { padding: 10, height: 90, backgroundColor: "#264653" },
-        headerStyle: { backgroundColor: "#264653", height: 125 },
+        tabBarStyle: { padding: 10, height: 90, backgroundColor: "#272836" },
+        headerStyle: { backgroundColor: "#272836", height: 125 },
         headerTintColor: "#FFFFFF",
         headerTitle: () => <HeaderLogo />,
         headerLeft: () => (

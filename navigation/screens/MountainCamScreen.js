@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 
 const rocketLive = "https://live6.brownrice.com/embed/bristolmountain1";
@@ -32,13 +33,37 @@ const RocketLiveURL = ({ url }) => {
   );
 };
 
+const launchpadlive = "https://live6.brownrice.com/embed/bristolmountain2";
+
+const LaunchPadLiveURL = ({ url2 }) => {
+  const handlePress = React.useCallback(async () => {
+    const supported = await Linking.canOpenURL(url2);
+
+    if (supported) {
+      await Linking.openURL(url2);
+    } else {
+      Alert.alert(`Unable to open url: ${url2}`);
+    }
+  }, [url2]);
+
+  return (
+    <TouchableOpacity
+      title="Launch Pad"
+      onPress={handlePress}
+      style={styles.button1}
+    >
+      <Text style={styles.buttontext}>LAUNCH PAD LIVE</Text>
+    </TouchableOpacity>
+  );
+};
+
 export default function MountainCamScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.contentview}>
           <Text style={styles.text1}>
-            {"\n"}MOUNTAIN CAMS {"\n"}
+            {"\n"}MOUNTAIN CAMS{"\n"}
           </Text>
           <Text style={styles.text2}>MORNING STAR</Text>
           <Image
@@ -47,14 +72,16 @@ export default function MountainCamScreen({ navigation }) {
               uri: "https://www.bristolmountain.com/webcams/morningstarcurrent.jpg",
             }}
           />
-          <Text style={styles.text2}>LAUNCHING PAD</Text>
+          <Text style={styles.text2}>LAUNCHING PAD{"\n"}</Text>
           <Image
             style={styles.camview}
             source={{
               uri: "https://www.bristolmountain.com/webcams/roselandcurrent.jpg",
             }}
           />
-          <Text style={styles.text2}>ROCKET</Text>
+          <LaunchPadLiveURL url2={launchpadlive} />
+
+          <Text style={styles.text2}>{"\n"}ROCKET</Text>
           <Image
             style={styles.camview}
             source={{
@@ -71,6 +98,7 @@ export default function MountainCamScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 0,
+    padding: 0,
   },
   contentview: {
     alignItems: "center",

@@ -65,7 +65,7 @@ export default class WeatherApp extends React.Component {
 
 const styles = StyleSheet.create({
   weatherContainer: {
-    backgroundColor: "#2a9d8f",
+    backgroundColor: "#a76e1f",
     flex: 0,
     flexDirection: "row",
     flexWrap: "wrap",
