@@ -25,7 +25,7 @@ export default class TrailsListed extends React.Component {
         const root = parse(text);
 
         const array3 = [];
-        for (let i = 2; i <= 13; i++) {
+        for (let i = 2; i <= 14; i++) {
           const el = root.querySelector(
             `.avia-table-2 > tbody:nth-child(1) > tr:nth-child(${i}) > td:nth-child(3)`
           );

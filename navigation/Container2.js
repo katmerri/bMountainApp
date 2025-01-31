@@ -22,6 +22,7 @@ import LiftsScreen from "./screens/LiftsScreen";
 import TrailsScreen from "./screens/TrailsScreen";
 import FallScreen from "./screens/FallScreen";
 import MountainCamScreen from "./screens/MountainCamScreen";
+import TicketsPage from "./screens/TicketScreen";
 
 function HeaderLogo() {
   return (
@@ -37,7 +38,7 @@ function HeaderLogo() {
 const skiPatrol = () =>
   Alert.alert(
     "Ski Patrol",
-    "Will be available again during the 2023-24 Ski Season.",
+    "Ski Patrol is available from open to close during the 2024-25 Ski Season",
     [
       {
         text: "Call 585-374-1178",
@@ -104,7 +105,7 @@ export default function Secondary() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Start"
+          name="HOME"
           component={Start}
           options={{ headerShown: false }}
         />
@@ -126,6 +127,11 @@ export default function Secondary() {
         <Stack.Screen
           name="MountainCam"
           component={MountainCamScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Tickets"
+          component={TicketsPage}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
