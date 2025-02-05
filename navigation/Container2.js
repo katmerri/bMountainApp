@@ -23,6 +23,7 @@ import TrailsScreen from "./screens/TrailsScreen";
 import FallScreen from "./screens/FallScreen";
 import MountainCamScreen from "./screens/MountainCamScreen";
 import TicketsPage from "./screens/TicketScreen";
+import RentalsPage from "./screens/RentalsScreen";
 
 function HeaderLogo() {
   return (
@@ -132,6 +133,11 @@ export default function Secondary() {
         <Stack.Screen
           name="Tickets"
           component={TicketsPage}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Rentals"
+          component={RentalsPage}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

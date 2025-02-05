@@ -12,6 +12,7 @@ import {
 import WeatherApp from "./utils/weatherApp2";
 import BMCam from "./images/mountaincam.jpg";
 import BMGateway from "./images/BMGateway.jpg";
+import BMRentals from "./images/BMRentals.jpg";
 import Lifts from "./utils/lifts";
 import Trails from "./utils/trails";
 import { Button } from "@rneui/base";
@@ -102,6 +103,17 @@ export default function HomeScreen({ navigation }) {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
+          title="Rentals"
+          onPress={() => navigation.navigate("Rentals")}
+          type="clear"
+        >
+          <View style={styles.fallBox}>
+            <ImageBackground source={BMRentals} style={styles.rentalsPicture}>
+              <Text style={styles.rentalText}>RENTALS</Text>
+            </ImageBackground>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
           title="Mountain Cameras"
           onPress={() => navigation.navigate("MountainCam")}
           type="clear"
@@ -141,13 +153,15 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontWeight: "bold",
     fontSize: 18,
+    textAlign: "center",
   },
   button1: {
     backgroundColor: "#70503d",
-    borderRadius: 5,
+
     marginVertical: 2,
     paddingHorizontal: 10,
     paddingVertical: 10,
+    width: "100%",
   },
   weather: {
     backgroundColor: "#a76e1f",
@@ -217,6 +231,7 @@ const styles = StyleSheet.create({
   },
   trailBox: {
     width: "50%",
+    paddingBottom: 10,
   },
   ticketPicture: {
     width: "100%",
@@ -232,5 +247,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "#808080C0",
     top: 160,
+  },
+  rentalsPicture: {
+    width: "100%",
+    height: undefined,
+    aspectRatio: 1,
+    top: -1,
+  },
+  rentalText: {
+    color: "white",
+    fontSize: 42,
+    lineHeight: 125,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#808080C0",
+    top: 1,
   },
 });
