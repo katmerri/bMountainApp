@@ -36,7 +36,7 @@ const SeasonPassURL = ({ url }) => {
       onPress={handlePress}
       style={styles.button1}
     >
-      <Text style={styles.text3}>24-25 Season Pass Information</Text>
+      <Text style={styles.text3}>25-26 Season Pass Information</Text>
     </TouchableOpacity>
   );
 };
@@ -46,12 +46,10 @@ export default function HomeScreen({ navigation }) {
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.text1}>
-          24-25 Season Pass - Winter Rates Now Available
+          25-26 Season Pass - Winter Rates Now Available
         </Text>
-        <Text style={styles.text2}>
-          Take advantage of our Season Card Packs!
-        </Text>
-        <Text style={styles.text2}>Purchase before December 31, 2024!</Text>
+        <Text style={styles.text2}>Take advantage of our 1200 Vertical!</Text>
+        <Text style={styles.text2}>Purchase before December 31, 2025!</Text>
         <SeasonPassURL url={seasonPassesURL} />
         <View style={styles.weather}>
           <View style={styles.weatherHeader}>
@@ -136,7 +134,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text1: {
-    backgroundColor: "#a76e1f",
+    backgroundColor: "#668f80",
     alignSelf: "stretch",
     textAlign: "center",
     fontSize: 18,
@@ -144,7 +142,7 @@ const styles = StyleSheet.create({
     color: "#ffffff",
   },
   text2: {
-    backgroundColor: "#a76e1f",
+    backgroundColor: "#668f80",
     alignSelf: "stretch",
     textAlign: "center",
     color: "#ffffff",
@@ -164,7 +162,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   weather: {
-    backgroundColor: "#a76e1f",
+    backgroundColor: "#668f80",
     flex: 0,
     flexDirection: "row",
     flexWrap: "wrap",
