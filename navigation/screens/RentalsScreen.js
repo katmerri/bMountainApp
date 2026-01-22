@@ -28,7 +28,7 @@ const RentalsURL = ({ url }) => {
       onPress={handlePress}
       style={styles.rentalButton1}
     >
-      <Text style={styles.rentalButtonText}>Purchase Rentals Here</Text>
+      <Text style={styles.rentalButtonText}>PURCHASE HERE</Text>
     </TouchableOpacity>
   );
 };

@@ -45,14 +45,11 @@ export default function HomeScreen({ navigation }) {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.text1}>
-          25-26 Season Pass - Winter Rates Now Available
-        </Text>
+        <Text style={styles.text1}>HOURS OF OPERATION:</Text>
+        <Text style={styles.text2}>Lifts: Monday - Friday 9AM - 9PM</Text>
+        <Text style={styles.text2}>Saturday - Sunday 8:30AM - 9PM</Text>
         <Text style={styles.text2}>
-          Lifts open Monday - Friday at 9AM & Saturday - Sunday at 8:30AM
-        </Text>
-        <Text style={styles.text2}>
-          And don't forget Twilight skiing from 3:30PM - 9PM daily
+          Twilight skiing from 3:30PM - 9PM (Daily)
         </Text>
         <SeasonPassURL url={seasonPassesURL} />
         <View style={styles.weather}>

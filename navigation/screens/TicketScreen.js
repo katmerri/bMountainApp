@@ -32,7 +32,8 @@ const ReloadsURL = ({ url }) => {
   );
 };
 
-const ticketsURL = "https://bristolmountain.com/";
+const ticketsURL =
+  "https://bristol-tmi.shop.bristolmountain.com/subKeyword/SUB_Lift";
 
 const TicketURL = ({ url }) => {
   const handlePress = React.useCallback(async () => {
