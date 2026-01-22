@@ -1,5 +1,37 @@
 import React from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
+
+const rentalsURL =
+  "https://bristol-tmi.shop.bristolmountain.com/packageList/navItem/Rentals";
+
+const RentalsURL = ({ url }) => {
+  const handlePress = React.useCallback(async () => {
+    const supported = await Linking.canOpenURL(url);
+
+    if (supported) {
+      await Linking.openURL(url);
+    } else {
+      Alert.alert(`Unable to open url: ${url}`);
+    }
+  }, [url]);
+
+  return (
+    <TouchableOpacity
+      title="Season Passes"
+      onPress={handlePress}
+      style={styles.rentalButton1}
+    >
+      <Text style={styles.rentalButtonText}>Purchase Rentals Here</Text>
+    </TouchableOpacity>
+  );
+};
 
 export default function RentalsPage({ navigation }) {
   return (
@@ -7,6 +39,7 @@ export default function RentalsPage({ navigation }) {
       <ScrollView>
         <View style={styles.contentview}>
           <Text style={styles.text1}>RENTALS</Text>
+          <RentalsURL url={rentalsURL} />
         </View>
       </ScrollView>
     </View>
@@ -44,5 +77,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingVertical: 20,
     width: 225,
+  },
+  rentalButtonText: {
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: 18,
+    textAlign: "center",
+  },
+  rentalButton1: {
+    backgroundColor: "#668f80",
+    width: "100%",
+    paddingVertical: 10,
   },
 });

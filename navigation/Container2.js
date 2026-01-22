@@ -27,7 +27,7 @@ import RentalsPage from "./screens/RentalsScreen";
 
 function HeaderLogo() {
   return (
-    <View style={{ alignItems: "center" }}>
+    <View style={{ alignItems: "center", height: 85 }}>
       <Image
         style={{ width: 140, height: 70 }}
         source={require("./screens/images/BMLogo.png")}
@@ -47,7 +47,7 @@ const skiPatrol = () =>
           Linking.openURL("tel:15853741178");
         },
       },
-    ]
+    ],
   );
 
 const homeName = "Home";
