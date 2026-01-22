@@ -48,8 +48,12 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.text1}>
           25-26 Season Pass - Winter Rates Now Available
         </Text>
-        <Text style={styles.text2}>Take advantage of our 1200 Vertical!</Text>
-        <Text style={styles.text2}>Purchase before December 31, 2025!</Text>
+        <Text style={styles.text2}>
+          Lifts open Monday - Friday at 9AM & Saturday - Sunday at 8:30AM
+        </Text>
+        <Text style={styles.text2}>
+          And don't forget Twilight skiing from 3:30PM - 9PM daily
+        </Text>
         <SeasonPassURL url={seasonPassesURL} />
         <View style={styles.weather}>
           <View style={styles.weatherHeader}>

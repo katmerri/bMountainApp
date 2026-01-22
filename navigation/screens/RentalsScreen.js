@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 42,
     fontWeight: "bold",
+    paddingVertical: 15,
   },
   text2: {
     color: "#e76f51",
